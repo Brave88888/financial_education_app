@@ -1,5 +1,4 @@
 Flask
-yfinance
 pandas
 matplotlib
 seaborn
@@ -7,3 +6,4 @@ scikit-learn
 scipy
 numpy
 Werkzeug
+requests
