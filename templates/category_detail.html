@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}{{ topic.name }} - {{ category.name }} - 金融应用Python编程教学{% endblock %}
+
+{% block content %}
+<div class="breadcrumb">
+    <a href="{{ url_for('index') }}">首页</a> >
+    <a href="{{ url_for('topic_detail', topic_id=topic.id) }}">{{ topic.name }}</a> > {{ category.name }}
+</div>
+
+<div class="category-header">
+    <h2>{{ topic.name }} - {{ category.name }}</h2>
+    <p>{{ category.description }}</p>
+</div>
+
+<div class="examples-container">
+    {% if examples %}
+        {% for example in examples %}
+        <div class="example-card">
+            <h3>{{ example.title }}</h3>
+            <div class="code-section">
+                <h4>代码实现</h4>
+                <pre><code class="language-python">{{ example.code }}</code></pre>
+            </div>
+            <div class="explanation-section">
+                <h4>代码说明</h4>
+                <p>{{ example.explanation }}</p>
+            </div>
+            <div class="actions">
+                <button class="btn-copy" data-clipboard-target="#code-{{ loop.index }}">复制代码</button>
+                <button class="btn-run">运行代码</button>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="no-examples">
+            <h3>暂无示例代码</h3>
+            <p>该分类下的代码示例正在开发中，敬请期待...</p>
+        </div>
+    {% endif %}
+</div>
+
+<section class="related-topics">
+    <h3>相关主题</h3>
+    <div class="related-grid">
+        {% for cat in categories %}
+            {% if cat.id != category.id %}
+            <div class="related-card">
+                <h4>{{ cat.name }}</h4>
+                <a href="{{ url_for('category_detail', topic_id=topic.id, category_id=cat.id) }}" class="btn">查看</a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}{{ topic.name }} - 金融应用Python编程教学{% endblock %}
+
+{% block content %}
+<div class="breadcrumb">
+    <a href="{{ url_for('index') }}">首页</a> > {{ topic.name }}
+</div>
+
+<div class="topic-header">
+    <div class="topic-icon-large">{{ topic.icon }}</div>
+    <h2>{{ topic.name }}</h2>
+    <p>{{ topic.description }}</p>
+</div>
+
+<div class="categories-container">
+    <h3>{{ topic.name }} 的分类主题</h3>
+    <div class="categories-grid">
+        {% for category in categories %}
+        <div class="category-card">
+            <h4>{{ category.name }}</h4>
+            <p>{{ category.description }}</p>
+            <a href="{{ url_for('category_detail', topic_id=topic.id, category_id=category.id) }}" class="btn">查看代码示例</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<section class="resources">
+    <h3>学习资源</h3>
+    <div class="resources-grid">
+        <div class="resource-card">
+            <h4>📖 学习指南</h4>
+            <p>详细的学习路线和课程安排</p>
+        </div>
+        <div class="resource-card">
+            <h4>💬 社区支持</h4>
+            <p>与其他学习者交流和分享经验</p>
+        </div>
+        <div class="resource-card">
+            <h4>🎥 视频教程</h4>
+            <p>丰富的视频教学资源</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

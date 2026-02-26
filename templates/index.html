@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - 金融应用Python编程教学{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h2>欢迎来到金融应用Python编程教学</h2>
+    <p>学习如何使用Python解决实际金融问题的完整教程</p>
+</div>
+
+<div class="topics-container">
+    <h3>金融应用编程主题</h3>
+    <div class="topics-grid">
+        {% for topic in topics %}
+        <div class="topic-card">
+            <div class="topic-icon">{{ topic.icon }}</div>
+            <h4>{{ topic.name }}</h4>
+            <p>{{ topic.description }}</p>
+            <a href="{{ url_for('topic_detail', topic_id=topic.id) }}" class="btn">查看详情</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<section class="features">
+    <h3>我们的特色</h3>
+    <div class="features-grid">
+        <div class="feature-card">
+            <h4>📚 丰富的内容</h4>
+            <p>包含10个金融应用主题和60个详细案例</p>
+        </div>
+        <div class="feature-card">
+            <h4>💻 代码实战</h4>
+            <p>所有示例都提供完整的可运行代码</p>
+        </div>
+        <div class="feature-card">
+            <h4>🔍 详细解析</h4>
+            <p>每个代码示例都配有详细的说明和注释</p>
+        </div>
+        <div class="feature-card">
+            <h4>🎓 教学友好</h4>
+            <p>适合不同层次的学习者，从入门到进阶</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
