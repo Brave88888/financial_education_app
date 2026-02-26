@@ -6720,3 +6720,6 @@ def category_detail(topic_id, category_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+else:
+    # For Vercel serverless deployment
+    application = app
