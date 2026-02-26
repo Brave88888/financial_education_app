@@ -1,0 +1,12 @@
+# GitHub CLI temporary files
+gh.zip
+gh_temp/
+
+# Virtual environment
+venv/
+.env
+*.pyc
+
+# __pycache__
+__pycache__/
+
